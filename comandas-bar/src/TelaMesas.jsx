@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export default function TelaMesas({ aoSelecionarMesa }) {
-  const totalMesas = 10; // Ajuste para a quantidade de mesas do bar
+  const totalMesas = 30; // Ajuste para a quantidade de mesas do bar
 
   // Lê o localStorage diretamente no estado inicial, sem precisar de useEffect
   const [statusMesas] = useState(() => {
