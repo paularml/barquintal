@@ -1,19 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { db } from './firebase';
+import { ref, onValue } from 'firebase/database';
 
 export default function TelaMesas({ aoSelecionarMesa }) {
-  const totalMesas = 30; // Ajuste para a quantidade de mesas do bar
+  const totalMesas = 10;
+  const [statusMesas, setStatusMesas] = useState({});
 
-  // Lê o localStorage diretamente no estado inicial, sem precisar de useEffect
-  const [statusMesas] = useState(() => {
-    const mesasOcupadas = {};
-    for (let i = 1; i <= totalMesas; i++) {
-      const dados = localStorage.getItem(`mesa_${i}`);
-      if (dados) {
-        mesasOcupadas[i] = JSON.parse(dados);
-      }
-    }
-    return mesasOcupadas;
-  });
+  // Escuta o banco de dados na nuvem. Se mudar em um celular, muda aqui na hora!
+  useEffect(() => {
+    const mesasRef = ref(db, 'mesas');
+    const unsubscribe = onValue(mesasRef, (snapshot) => {
+      const dados = snapshot.val();
+      setStatusMesas(dados || {});
+    });
+
+    return () => unsubscribe(); // Limpa a conexão ao fechar a tela
+  }, []);
 
   return (
     <div style={{ padding: '20px' }}>
