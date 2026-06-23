@@ -6,7 +6,9 @@ const CARDAPIO = [
   { id: 1, nome: "Cerveja Duplo Malte", preco: 12.00 },
   { id: 2, nome: "Batata Frita c/ Queijo", preco: 35.00 },
   { id: 3, nome: "Caipirinha de Limão", preco: 18.00 },
-  { id: 4, nome: "Água sem gás", preco: 5.00 }
+  { id: 4, nome: "Água sem gás", preco: 5.00 },
+  { id: 5, nome: "Teste", preco: 10.00 }
+  
 ];
 
 export default function ComandaDigital({ numeroMesa, aoVoltar }) {

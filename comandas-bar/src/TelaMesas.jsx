@@ -3,7 +3,7 @@ import { db } from './firebase';
 import { ref, onValue } from 'firebase/database';
 
 export default function TelaMesas({ aoSelecionarMesa }) {
-  const totalMesas = 10;
+  const totalMesas = 30;
   const [statusMesas, setStatusMesas] = useState({});
 
   // Escuta o banco de dados na nuvem. Se mudar em um celular, muda aqui na hora!
